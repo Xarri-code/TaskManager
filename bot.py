@@ -5,12 +5,12 @@ import asyncio
 import discord
 from discord import app_commands
 from dotenv import load_dotenv
-from github import Github, GithubException
+from github import Github, GithubException, Auth
 
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-gh = Github(os.getenv("GITHUB_TOKEN"))
+gh = Github(auth=Auth.Token(os.getenv("GITHUB_TOKEN")))
 repo = gh.get_repo(os.getenv("GITHUB_REPO"))
 
 
